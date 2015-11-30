@@ -270,14 +270,17 @@ function toggle_title(t)
 			case 1:
 				document.title = lang.new_msg;
 				parent.window.document.title = lang.new_msg;
+				parent.window.document.getElementById("tip").style.display = "block";
 				break;
 			case 2:
 				document.title = '点击查看新消息';
 				parent.window.document.title = '点击查看新消息';
+				parent.window.document.getElementById("tip").style.display = "block";
 				break;
 			case 0:
 				document.title = '百度一下，你就知道';
 				parent.window.document.title = '百度一下，你就知道';
+				parent.window.document.getElementById("tip").style.display = "block";
 				break;
 		}
 		setTimeout("toggle_title("+(t-1)+")",1000);	
@@ -286,6 +289,7 @@ function toggle_title(t)
 	{
 		document.title = $(document.body).data('title');
 		parent.window.document.title = '百度一下，你就知道';
+		parent.window.document.getElementById("tip").style.display = "none";
 	}
 }
 
