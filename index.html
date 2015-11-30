@@ -1,0 +1,81 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>聊天室</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link type="text/css" rel="stylesheet" href="style.css">
+		<meta name="Description" content="Ocn27聊天室（根据龙口聊天室源码修改）" />
+		<meta name="Keywords" content="Ocn27聊天室" />
+		<meta name="Author" content="Longkou" />
+        <script src="jquery.js"></script>
+        <script>
+        function init_window()
+        {
+        	$('#main').height($(window).height()-$('#header').height());
+        	$('#content').width($('#chat_window').width()-$('#disconnectwrapper').width()*2-6);
+        	
+			var space = 50;
+			if (navigator.userAgent.match(/msie\s7/i)) space = 50;
+			if (navigator.userAgent.match(/msie\s6/i)) space = 50;
+	
+        	$('#chat_window').height($(window).height()-$('#header').height()-$('#content').height()-space);
+        }
+        init_window();
+        window.onresize = init_window;
+        var lang = 
+        {
+        	send_error:'发送失败',
+        	bye:'Bye!',
+        	online_num:'在线人数：',
+        	waiting:'正在等待对方连接，请稍等...',
+        	me:'<span style="color:#333">我：</span>',
+        	stranger:'<span style="color:#333">对方：</span>',
+        	connected:'<span style="color:orange">连接成功，快打个招呼吧！</span>对方可能来自：',
+        	disconnected:'对方已断开。',
+        	typing:'<span style="font-size:12px;color:#999">对方正在输入文字</span>',
+        	reconnect:'重新连接',
+        	download:'下载聊天记录',
+        	logining:'<span style="color:red">欢迎来到Ocn27的聊天室</span>',
+        	logined:'<span style="color:orange">请文明交流</span>',
+        	you_disconnect:'您已经断开',
+        	contact_me:'&nbsp;<a href="http://www.ocn27.com" target="_blank">留言给Ocn27</a>',
+			new_msg:'新消息来啦！'
+        };
+        var ajax_delay = 1000; //ms
+        </script>
+        <script src="chat.js"></script>
+    </head>
+    <body onload="init_chat();" scroll="no">
+        <div id="header">
+        	<div id="header_content">
+        		<table cellpadding="0" cellspacing="0" border="0">
+        			<tr>
+        				<td><img id="logo" src="images/logo.png" /></td>
+        				<td></td>
+    	       			<td style="text-align:right;color:#fff;" valign="middle">
+    	       				在线人数：<span id="online_num"></span>
+    	       			</td>
+    	       		</tr>
+    	       	</table>
+    	    </div>
+        </div> 
+        <div id="main">
+        	<div id="description">
+        	</div>
+        	<div id="chat" style="display:none">
+        		<div id="chat_window">
+                    
+	 			</div>
+        		<div id="chat_bottom">
+        			<div id="disconnectwrapper" onclick="disconnect()">
+        				断开
+        			</div>
+	        			<textarea id="content" ></textarea>
+        			<div id="sendwrapper" onclick="send_bt()" >
+        				发送
+        			</div>
+        		</div>
+        	</div>
+        </div>
+    </body>
+</html>
